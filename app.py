@@ -12,12 +12,8 @@ X = dataset.iloc[: , :].values
 i = 0
  
 
+
 @app.get('/')
-def read_form():
-    return 'hello world'
-
-
-@app.get("/form")
 def form_post(request: Request):
     image1 = X[i][0]
     image2 = X[i][1]
@@ -25,7 +21,7 @@ def form_post(request: Request):
     return templates.TemplateResponse('form.html', context={'request': request,'img1':image1, 'img2':image2})
 
 
-@app.post("/form")
+@app.post('/')
 def form_post(request: Request):
     global i
     i = i+1
